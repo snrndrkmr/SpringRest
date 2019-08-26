@@ -28,7 +28,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			return 0;
 		} else {
 			list.add(emp);
-			System.out.println(list);
 			length++;
 			return 1;
 		}

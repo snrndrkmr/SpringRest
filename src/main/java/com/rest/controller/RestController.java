@@ -38,7 +38,6 @@ public class RestController {
 		List<Employee> list = new ArrayList<>();
 		List<Employee> temp = new ArrayList<>();
 		list = empService.Read();
-		System.out.println(list);
 		for(Employee emp : list) {
 			temp.add(emp);
 		}

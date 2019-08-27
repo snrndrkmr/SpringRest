@@ -28,9 +28,9 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public void Delete(int empId) {
+	public int Delete(int empId) {
 		// TODO Auto-generated method stub
-		employ.Delete(empId);
+		return employ.Delete(empId);
 	}
 
 	@Override

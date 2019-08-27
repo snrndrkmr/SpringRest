@@ -16,13 +16,8 @@ import com.rest.service.EmployeeService;
 @org.springframework.web.bind.annotation.RestController	
 public class RestController {
 	
-	
 	Employee employee,employee1;
-	
-	
 	Department dept,dept1;
-	
-	
 	Address address,address1;
 	
 	@Autowired
@@ -34,7 +29,7 @@ public class RestController {
 	}
 	
 	@GetMapping("/getEmployee")
-	public List getEmpDetails() {
+	public List<Employee> getEmpDetails() {
 		List<Employee> list = new ArrayList<>();
 		List<Employee> temp = new ArrayList<>();
 		list = empService.Read();
@@ -45,21 +40,41 @@ public class RestController {
 	}
 	/*@PutMapping("/putEmployee")*/
 	@GetMapping("/putEmployee")
-	public List setEmployeeDetails() {
+	public String createEmployee() {
+		int flag = 0;
 		dept = new Department(1, "ERS");
 		address = new Address("02-41", "Elcot Sez", "Chennai", "India");
 		employee = new Employee(1, "John", 12000, dept, address);
-		empService.Create(employee);
+		flag = empService.Create(employee);
 		dept1 = new Department(2, "Apps");
 		address1 = new Address("02-41", "Elcot Sez", "Chennai", "India");
 		employee1 = new Employee(2, "Bell", 10000, dept1, address1);
 		empService.Create(employee1);
-		System.out.println(employee1.toString());
-		List<Employee> list = new ArrayList<>();
-		list.add(employee);
-		list.add(employee1);
-		return list;
+		if(flag >0) {
+			return "Employee Created Successfully";
+		}
+		return "Employee Not Created Successfully";
 	}
 	
+	@GetMapping("/removeEmployee")
+	public String removeEmployee() {
+		int result = empService.Delete(1);
+		if(result >0) {
+			return "Employee Removed Successfully";
+		}
+		return "Employee Not Removed Successfully";
+	}
+	
+	@GetMapping("/updateEmployee")
+	public String updateEmployee() {
+		dept = new Department(1, "ERS");
+		address = new Address("02-41", "Elcot City", "Banglore", "India");
+		employee = new Employee(1, "John", 12000, dept, address);
+		int result = empService.Update(employee);
+		if(result >0) {
+			return "Employee Updated Successfully";
+		}
+		return "Employee Not Updated Successfully";
+	}
 	
 }

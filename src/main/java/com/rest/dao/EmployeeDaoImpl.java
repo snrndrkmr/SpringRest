@@ -39,21 +39,22 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		if (temp == null) {
 			return 0;
 		} else {
-			temp = emp;
-			list.add(temp);
+			list.remove(temp);
+			list.add(emp);
 			return 1;
 		}
 	}
 
 	@Override
-	public void Delete(int empId) {
+	public int Delete(int empId) {
 		// TODO Auto-generated method stub
 		Employee temp = getById(empId);
 		if (temp == null) {
-			return;
+			return 0;
 		} else {
 			list.remove(temp);
 			length--;
+			return 1;
 		}
 
 	}

@@ -16,13 +16,13 @@ import com.rest.service.EmployeeService;
 @org.springframework.web.bind.annotation.RestController	
 public class RestController {
 	
-	
+	@Autowired
 	Employee employee,employee1;
 	
-	
+	@Autowired
 	Department dept,dept1;
 	
-	
+	@Autowired
 	Address address,address1;
 	
 	@Autowired
